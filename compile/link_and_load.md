@@ -62,6 +62,6 @@ ldd 命令模拟加载可执行程序需要的动态链接库，但并不执行�
 <h2 id="readelf">readelf - Displays information about ELF files</h2>
 
 
-reference
+# Reference
 -------------
-1. ![高级语言的编译：链接及装载过程介绍](http://tech.meituan.com/linker.html)
+1. [高级语言的编译：链接及装载过程介绍](http://tech.meituan.com/linker.html)
