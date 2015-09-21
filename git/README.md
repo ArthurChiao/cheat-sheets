@@ -1,3 +1,6 @@
+
+## git log
+
 EXAMPLES (*from `git log --help`*)
 
 `git log --no-merges`
@@ -33,3 +36,24 @@ Shows all commits that are in local master but not in any remote repository mast
 Shows the history including change diffs, but only from the "main branch" perspective, skipping commits that come from merged branches, and showing full diffs of changes
 introduced by the merges. This makes sense only when following a strict policy of merging all topic branches when staying on a single integration branch.
 
+
+## github上fork别人项目后如何与源项目保持同步
+
+Fork `sjtu-medialab/mass` to `arthurchiao/mass`. When `sjtu-medialab/mass` is changed,
+i want to pull and rebase the change to `arthurchiao/mass`.
+
+```shell
+git clone https://arthurchiao/github.com/arthurchiao/mass.git
+
+cd mass
+
+# add upstream, the name (upstream_medialab) is arbitrary
+git remote add upstream_medialab https://github.com/sjtu-medialab/mass.git
+
+# assume on master branch
+git pull upstream_medialab master
+
+# if no conflicts, the changes will be rebased onto your code
+# push changes to your own repo (https://github.com/arthurchiao/mass.git)
+git push origin master
+```
