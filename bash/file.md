@@ -14,3 +14,14 @@ alias lss='du -sh .'
 
 lss # same as 'du -sh .'
 ```
+
+2. rev - reverse lines of a file or files
+```shell
+cat TODO.md
+
+1. network optimization: classid in linux network
+
+rev TODO.md
+
+krowten xunil ni dissalc :noitazimitpo krowten .1
+```
