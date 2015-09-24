@@ -57,3 +57,20 @@ git pull upstream_medialab master
 # push changes to your own repo (https://github.com/arthurchiao/mass.git)
 git push origin master
 ```
+
+## Handle `pull request` and merge code in command line
+If you do not want to use the merge button or an automatic merge cannot be
+performed, you can perform a manual merge on the command line.
+
+Step 1: From your project repository, check out a new branch and test the changes.
+```shell
+git checkout -b ArthurChiao-master master
+git pull https://github.com/ArthurChiao/mass.git master
+```
+
+Step 2: Merge the changes and update on GitHub.
+```shell
+git checkout master
+git merge --no-ff ArthurChiao-master
+git push origin master
+```
