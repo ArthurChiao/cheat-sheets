@@ -74,3 +74,9 @@ git checkout master
 git merge --no-ff ArthurChiao-master
 git push origin master
 ```
+
+## git clone
+```shell
+# --depth <depth> Create a shallow clone with a history truncated to the specified number of revisions.
+git clone --depth 1 https://github.com/imatix/zguide.git
+```
