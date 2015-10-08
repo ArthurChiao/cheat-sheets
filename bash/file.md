@@ -1,4 +1,4 @@
-1. du - estimate space usage of a folder or file
+1. du - estimate disk (space) usage of a folder or file
 ```shell
 du -sh <file or folder>
 
