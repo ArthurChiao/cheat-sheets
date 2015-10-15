@@ -25,3 +25,10 @@ rev TODO.md
 
 krowten xunil ni dissalc :noitazimitpo krowten .1
 ```
+
+3. remove all `*.pyc` files, recursively
+```shell
+find . -name "*.pyc" -exec rm -f {} \; # remove file
+
+find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
+```
