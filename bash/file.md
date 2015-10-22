@@ -1,4 +1,11 @@
-1. du - estimate disk (space) usage of a folder or file
+**Index**
+
+1. [du](#du)
+1. [rev](#rev)
+1. [find](#find)
+
+<a name="du"></a>
+## du - estimate disk (space) usage of a folder or file
 ```shell
 du -sh <file or folder>
 
@@ -15,7 +22,8 @@ alias lss='du -sh .'
 lss # same as 'du -sh .'
 ```
 
-2. rev - reverse lines of a file or files
+<a name="rev"></a>
+## rev - reverse lines of a file or files
 ```shell
 cat TODO.md
 
@@ -26,7 +34,8 @@ rev TODO.md
 krowten xunil ni dissalc :noitazimitpo krowten .1
 ```
 
-3. remove all `*.pyc` files, recursively
+<a name="find"></a>
+## find and remove all `*.pyc` files, recursively
 ```shell
 find . -name "*.pyc" -exec rm -f {} \; # remove file
 
