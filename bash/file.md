@@ -1,8 +1,9 @@
 **Index**
 
-1. [du](#du)
-1. [rev](#rev)
-1. [find](#find)
+1. [du: disk usage](#du)
+1. [rev: reverse text lines](#rev)
+1. [find: find a file and execute actions on results](#find)
+1. [dd: copy and convert file](#find)
 
 <a name="du"></a>
 ## du - estimate disk (space) usage of a folder or file
@@ -40,4 +41,19 @@ krowten xunil ni dissalc :noitazimitpo krowten .1
 find . -name "*.pyc" -exec rm -f {} \; # remove file
 
 find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
+```
+
+
+<a name="dd"></a>
+## convert and copy a file. Copy a file, converting and formatting according
+to the operands.
+
+Example, generate 1GB test file with random data:
+```shell
+dd if=/dev/urandom of=testdata bs=1M count=1024
+
+# if: read from file instead of stdin
+# of: write to file instead of stdout
+# bs: read and write BYTES bytes at a time (also see ibs=,obs=)
+# count: copy only N input blocks
 ```
