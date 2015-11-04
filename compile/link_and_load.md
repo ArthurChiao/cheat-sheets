@@ -15,11 +15,13 @@ linking, loading, inspecting tools
 gcc -c test.c -o test.o; nm test.o
 ```
 
-`nm` could also list the symbols from excutables:
+`nm` could also list the symbols from excutables and shared library:
 ```shell
 gcc test.o -o test
 
 nm test
+
+nm -D libxxx.so # list symbols in libxxx.so
 ```
 
 
