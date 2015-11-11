@@ -8,6 +8,7 @@ linking, loading, inspecting tools
 1. [ldd](#ldd)
 1. [inspect memory mapping](#inspect memory mapping)
 1. [readelf](#readelf)
+1. [ld](#ld)
 1. [reference](#reference)
 
 <h2 id="nm">nm - list symbols from object files</h2>
@@ -62,8 +63,26 @@ ldd 命令模拟加载可执行程序需要的动态链接库，但并不执行�
 
 
 <h2 id="readelf">readelf - Displays information about ELF files</h2>
+```shell
+readelf -d a.out
+```
+
+
+<h2 id="ld">ld - loading tool</h2>
+```shell
+# alternative 1
+gcc -fPIC -c -Wall test.c
+ld -shared test.o -o libtest.so
+
+# alternative 2
+gcc -fPIC -shared -Wall -o libtest.so test.c
+
+# generate shared lib, with specified version
+gcc -fPIC -shared -Wall -Wl,-soname,libtest.so.0  -o libtest.so.0.0.0 test.c
+```
 
 
 # Reference
 -------------
 1. [高级语言的编译：链接及装载过程介绍](http://tech.meituan.com/linker.html)
+1. [Linux动态库相关知识整理](http://zkt.name/linuxgong-xiang-ku-de-chuang-jian-yu-shi-yong/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
