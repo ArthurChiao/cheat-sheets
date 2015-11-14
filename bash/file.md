@@ -45,8 +45,8 @@ find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
 
 
 <a name="dd"></a>
-## convert and copy a file. Copy a file, converting and formatting according
-to the operands.
+## convert and copy a file.
+Copy a file, converting and formatting according to the operands.
 
 Example, generate 1GB test file with random data:
 ```shell

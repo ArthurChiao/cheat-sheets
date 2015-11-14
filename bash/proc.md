@@ -17,6 +17,6 @@ pkill sshd # kill process named sshd
 
 <a name="trace"></a>
 ## strace, ltrace
-strace - trace system call and signals
+`strace` - trace system call and signals
 
-ltrace - a library call tracer (trace userpace libraries, routines)
+`ltrace` - a library call tracer (trace userpace libraries, routines)

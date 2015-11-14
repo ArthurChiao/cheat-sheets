@@ -13,10 +13,11 @@ linking, loading, inspecting tools
 
 <h2 id="nm">nm - list symbols from object files</h2>
 ```shell
-gcc -c test.c -o test.o; nm test.o
+gcc -c test.c -o test.o
+nm test.o
 ```
 
-`nm` could also list the symbols from excutables and shared library:
+`nm` could also list the symbols from **excutables and shared library**:
 ```shell
 gcc test.o -o test
 
@@ -34,7 +35,8 @@ objdump -D test | less
 ```
 
 
-<h2 id="objdump">ldd - print shared library dependencies</h2>
+<h2 id="ldd">ldd - show shared library dependencies</h2>
+`ldd` lists the shared library dependencies of an excutable file:
 ```shell
 ldd a.out
 
@@ -55,10 +57,10 @@ ldd 命令模拟加载可执行程序需要的动态链接库，但并不执行�
 `cat /proc/<pid>/maps/` where <pid> is the process ID.
 
 ```shell
-7feeef61f000-7feeef7d4000 r-xp 00000000 fd:01 135891                     /lib/x86_64-linux-gnu/libc-2.15.so
-7feeef7d4000-7feeef9d3000 ---p 001b5000 fd:01 135891                     /lib/x86_64-linux-gnu/libc-2.15.so
-7feeef9d3000-7feeef9d7000 r--p 001b4000 fd:01 135891                     /lib/x86_64-linux-gnu/libc-2.15.so
-7feeef9d7000-7feeef9d9000 rw-p 001b8000 fd:01 135891                     /lib/x86_64-linux-gnu/libc-2.15.so
+7feeef61f000-7feeef7d4000 r-xp 00000000 fd:01 135891 /lib/x86_64-linux-gnu/libc-2.15.so
+7feeef7d4000-7feeef9d3000 ---p 001b5000 fd:01 135891 /lib/x86_64-linux-gnu/libc-2.15.so
+7feeef9d3000-7feeef9d7000 r--p 001b4000 fd:01 135891 /lib/x86_64-linux-gnu/libc-2.15.so
+7feeef9d7000-7feeef9d9000 rw-p 001b8000 fd:01 135891 /lib/x86_64-linux-gnu/libc-2.15.so
 ```
 
 
@@ -69,9 +71,10 @@ readelf -d a.out
 
 
 <h2 id="ld">ld - loading tool</h2>
+Generate a shared library with `ld`:
 ```shell
 # alternative 1
-gcc -fPIC -c -Wall test.c
+gcc -fPIC -c -Wall test.c # PIC: Position Independent Code
 ld -shared test.o -o libtest.so
 
 # alternative 2
