@@ -1,9 +1,28 @@
 **Index**
 
+1. [df: filesystem disk usage](#df)
 1. [du: disk usage](#du)
 1. [rev: reverse text lines](#rev)
 1. [find: find a file and execute actions on results](#find)
 1. [dd: copy and convert file](#find)
+
+<a name="df"></a>
+## df - report file system disk space usage
+```shell
+# show disk usage, in human readable (-h) format:
+# Filesystem            Size  Used Avail Use% Mounted on
+$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2       907G  111G  750G  13% /
+none            4.0K     0  4.0K   0% /sys/fs/cgroup
+udev            4.8G  4.0K  4.8G   1% /dev
+tmpfs           984M  1.3M  983M   1% /run
+none            5.0M     0  5.0M   0% /run/lock
+none            4.9G  106M  4.7G   3% /run/shm
+none            100M   48K  100M   1% /run/user
+/dev/sda1       511M  3.4M  508M   1% /boot/efi
+
+```
 
 <a name="du"></a>
 ## du - estimate disk (space) usage of a folder or file
