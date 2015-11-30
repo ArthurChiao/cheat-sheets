@@ -16,6 +16,9 @@ tmux commands
 ```shell
 tmux # create new session
 tmux new -s <session name> # create new session, specify name
+# e.g. create and delete sessions
+tmux new -s session_1 # create new session, session name `session_1`
+tmux kill-session -t session_1 # kill `session_1`
 
 tmux ls # list all sessions
 

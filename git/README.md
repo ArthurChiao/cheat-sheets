@@ -104,3 +104,22 @@ git push origin master
 # --depth <depth> Create a shallow clone with a history truncated to the specified number of revisions.
 git clone --depth 1 https://github.com/imatix/zguide.git
 ```
+
+## git clean
+git-clean - Remove untracked files from the working tree.
+
+Cleans the working tree by recursively removing files that are not under
+version control, starting from the current directory.
+```shell
+git clean [-d] [-f] [-i] [-n] [-q] [-e <pattern>] [-x | -X] [--] <path>…
+```
+
+## remove local/remote branches
+```
+# remove local branch
+git branch --delete --force <branchName>
+git branch -D <branchName>
+
+# remove remote branch
+git push origin --delete <branchName>
+```
