@@ -4,7 +4,8 @@
 1. [du: disk usage](#du)
 1. [rev: reverse text lines](#rev)
 1. [find: find a file and execute actions on results](#find)
-1. [dd: copy and convert file](#find)
+1. [dd: copy and convert file](#dd)
+1. [tar: create/extract archives](#tar)
 
 <a name="df"></a>
 ## df - report file system disk space usage
@@ -73,4 +74,30 @@ dd if=/dev/urandom of=testdata bs=1M count=1024
 # of: write to file instead of stdout
 # bs: read and write BYTES bytes at a time (also see ibs=,obs=)
 # count: copy only N input blocks
+```
+
+<a name="tar"></a>
+## create/extract archives
+`Tar` comes from `Tape Archiver`, it is a POSIX standard.
+`tar` only packs files (result in `.tar` files), if you want compress them,
+you need to specify a compression method, e.g, `bzip2` (`.tar.bz2`),
+`gzip` (`.tar.gz`).
+
+```shell
+# put all files in `/home/xxx/testdir/` into a new created archive, and
+# compress it with `gzip` format
+tar pczf test.tar.gz /home/xxx/testdir
+
+# `p` - preserve file attributes and priviledges
+# `c` - create new file
+# `z` - compress with gzip
+# `f` - create new archive file, otherwise the output will be `stdout`
+
+
+# extract files
+tar xzvf test.tar.gz
+# 'x' - extract
+# 'z' - gzip compressed
+# 'v' - verbose
+# 'f' - read from a file (`test.tar.gz`)
 ```
