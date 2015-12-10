@@ -1,4 +1,4 @@
-cheat sheets of many useful tools
+cheat sheets of command line tools
 ===================================
 
 1. [bash](bash/)
