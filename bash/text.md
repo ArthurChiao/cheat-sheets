@@ -16,6 +16,9 @@ text processing
 
   # find lines do not include `session` in a.txt
   grep -v session a.txt
+
+  # find text lines containing `AAA` but not containing `BBB`, count lines
+  cat -v record.log | grep AAA | grep -v BBB | wc -l
   ```
 
 1. `tr` - 可以完成简单的字符转换任务

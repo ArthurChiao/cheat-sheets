@@ -35,14 +35,6 @@ misc commands
   hash
   ```
 
-1. `whatis`
-
-  查看一个linux命令的概要与用法
-
-  ```shell
-  whatis ls
-  whatis man
-  ```
 
 ------------
 

@@ -61,6 +61,22 @@ find . -name "*.pyc" -exec rm -f {} \; # remove file
 find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
 ```
 
+count how many files in current folder:
+```shell
+find . | wc -l
+
+# list all files in current dir, and number them
+ls | cat -n # `-n` number all output lines
+
+    1  LICENSE
+    2  README.md
+    3  bash
+    4  compile
+    5  git
+    6  profiling.md
+    7  tmux.md
+```
+
 
 <a name="dd"></a>
 ## convert and copy a file.
