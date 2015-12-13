@@ -43,6 +43,9 @@ text processing
 
   # 把文件中所有的数字 n 替换为 "--n--" 的形式
   sed -E "s/([0-9]+)/--\1--/g" grephelp.txt
+
+  # get current branch name
+  MY_CURRENT_BRANCH=$(cat .git/HEAD | sed 's/ref: //g')
   ```
 
 1. `uniq` - remove repeated lines
