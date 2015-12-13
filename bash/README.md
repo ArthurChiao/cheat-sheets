@@ -20,3 +20,14 @@ bash commands
 1. [misc commands/tools](misc.md)
 
   `bind`, `compgen`, `disown`, `hash`
+
+1. [built-in macros](macro.md)
+
+
+--------------------
+
+# bash resources
+
+1. [Architecture of Open Source Applications: Chapter2 bash](http://www.aosabook.org/en/bash.html)
+
+  `Bash` architecture.
