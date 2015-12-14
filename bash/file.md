@@ -4,6 +4,7 @@
 1. [du: disk usage](#du)
 1. [rev: reverse text lines](#rev)
 1. [find: find a file and execute actions on results](#find)
+1. [file: show file info](#file)
 1. [dd: copy and convert file](#dd)
 1. [tar: create/extract archives](#tar)
 
@@ -59,6 +60,16 @@ krowten xunil ni dissalc :noitazimitpo krowten .1
 find . -name "*.pyc" -exec rm -f {} \; # remove file
 
 find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
+
+# 将当前目录下的所有权变更为arthur
+# {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名
+find . -type f -user root -exec chown arthur {} \;
+
+# copy all found files to another folder
+find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
+
+# 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本
+-exec ./task.sh {} \;
 ```
 
 count how many files in current folder:
@@ -75,6 +86,38 @@ ls | cat -n # `-n` number all output lines
     5  git
     6  profiling.md
     7  tmux.md
+```
+
+```shell
+# find all .txt
+find . -name "*.txt"
+
+# find all files except .txt
+find . ! -name "*.txt"
+
+# specify search depth
+find . -maxdepth 1 -type f
+```
+
+find by ***time/size/permission/***:
+
+| command | effects |
+| :------ | :------------ |
+| find . -atime 7 -type f | 最近`第7天`被访问过的所有文件 |
+| find . -atime -7 -type f | 最近`7天内`被访问过的所有文件 |
+| find . -atime +7 -type f | `7天前`被访问过的所有文件 |
+| find . -type f -size +2k | 寻找大于2k的文件 |
+| find . -type f -perm 644 | 找具有可执行权限的所有文件 |
+| find . -type f -user arthur | find all files owned by `arthur` |
+
+
+<a name="file"></a>
+## show file info, such as file type
+```shell
+file README.md
+
+# find all executables in current dir
+ls -lrt | awk '{print $9}'|xargs file|grep  ELF| awk '{print (}'|tr -d ':')
 ```
 
 
