@@ -107,6 +107,7 @@ find by ***time/size/permission/***:
 | find . -atime -7 -type f | 最近`7天内`被访问过的所有文件 |
 | find . -atime +7 -type f | `7天前`被访问过的所有文件 |
 | find . -type f -size +2k | 寻找大于2k的文件 |
+| `find . -size 0 | xargs rm -f &` | remove zero size files |
 | find . -type f -perm 644 | 找具有可执行权限的所有文件 |
 | find . -type f -user arthur | find all files owned by `arthur` |
 

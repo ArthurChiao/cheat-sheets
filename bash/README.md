@@ -17,6 +17,10 @@ bash commands
 
   `grep`, `tr`, `sed`, `uniq`, `wc`
 
+1. [network tools](network.md)
+
+  `netstat`
+
 1. [misc commands/tools](misc.md)
 
   `bind`, `compgen`, `disown`, `hash`
