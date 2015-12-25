@@ -35,3 +35,25 @@ bash commands
 1. [Architecture of Open Source Applications: Chapter2 bash](http://www.aosabook.org/en/bash.html)
 
   `Bash` architecture.
+
+1. [Netflix Tech: Linux Performance Analysis in 60,000 Milliseconds](http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html)
+
+  You login to a Linux server with a performance issue: what do you check in
+  the first minute?
+
+  In this post, the Netflix Performance Engineering team will show you the
+  first 60 seconds of an optimized performance investigation at the command
+  line, using standard Linux tools you should have available.
+
+  ```shell
+  uptime
+  dmesg | tail
+  vmstat 1
+  mpstat -P ALL 1
+  pidstat 1
+  iostat -xz 1
+  free -m
+  sar -n DEV 1
+  sar -n TCP,ETCP 1
+  top
+  ```
