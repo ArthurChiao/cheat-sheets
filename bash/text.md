@@ -55,6 +55,15 @@ text processing
   uniq -d a.txt # print only the repeated lines
 
   uniq -c a.txt # list the repeatitions of each distinct line
+
+  # c is a union b
+  cat a b | sort | uniq > c
+
+  # c is a intersect b
+  cat a b | sort | uniq -d > c
+
+  # c is set difference a - b
+  cat a b b | sort | uniq -u > c
   ```
 
 1. `sort` - sort text line

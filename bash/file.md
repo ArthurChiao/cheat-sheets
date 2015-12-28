@@ -5,159 +5,184 @@
 1. [rev: reverse text lines](#rev)
 1. [find: find a file and execute actions on results](#find)
 1. [file: show file info](#file)
+1. [tee: redirect streams](#tee)
 1. [dd: copy and convert file](#dd)
 1. [tar: create/extract archives](#tar)
 
-<a name="df"></a>
-## df - report file system disk space usage
-```shell
-# show disk usage, in human readable (-h) format:
-$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda2       907G  111G  750G  13% /
-none            4.0K     0  4.0K   0% /sys/fs/cgroup
-udev            4.8G  4.0K  4.8G   1% /dev
-tmpfs           984M  1.3M  983M   1% /run
-none            5.0M     0  5.0M   0% /run/lock
-none            4.9G  106M  4.7G   3% /run/shm
-none            100M   48K  100M   1% /run/user
-/dev/sda1       511M  3.4M  508M   1% /boot/efi
-```
+--------------------
 
-<a name="du"></a>
-## du - estimate disk (space) usage of a folder or file
-```shell
-du -sh <file or folder>
+1. <a name="df">df</a>
 
-# exmaples
-du -sh . # total disk usage of current folder
+  df - report file system disk space usage
 
-du -sh * # disk usage of each files in current folder
+  ```shell
+  # show disk usage, in human readable (-h) format:
+  $ df -h
+  Filesystem      Size  Used Avail Use% Mounted on
+  /dev/sda2       907G  111G  750G  13% /
+  none            4.0K     0  4.0K   0% /sys/fs/cgroup
+  udev            4.8G  4.0K  4.8G   1% /dev
+  tmpfs           984M  1.3M  983M   1% /run
+  none            5.0M     0  5.0M   0% /run/lock
+  none            4.9G  106M  4.7G   3% /run/shm
+  none            100M   48K  100M   1% /run/user
+  /dev/sda1       511M  3.4M  508M   1% /boot/efi
+  ```
 
-du -sh ./log # disk usage of ./log folder
+1. <a name="du">du</a>
 
-# useful shortcut
-alias lss='du -sh .'
+  du - estimate disk (space) usage of a folder or file
 
-lss # same as 'du -sh .'
-```
+  ```shell
+  du -sh <file or folder>
 
-<a name="rev"></a>
-## rev - reverse lines of a file or files
-```shell
-cat TODO.md
+  # exmaples
+  du -sh . # total disk usage of current folder
 
-1. network optimization: classid in linux network
+  du -sh * # disk usage of each files in current folder
 
-rev TODO.md
+  du -sh ./log # disk usage of ./log folder
 
-krowten xunil ni dissalc :noitazimitpo krowten .1
-```
+  # useful shortcut
+  alias lss='du -sh .'
 
-<a name="find"></a>
-## find and remove all `*.pyc` files, recursively
-```shell
-find . -name "*.pyc" -exec rm -f {} \; # remove file
+  lss # same as 'du -sh .'
+  ```
 
-find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
+1. <a name="rev">rev</a>
 
-# 将当前目录下的所有权变更为arthur
-# {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名
-find . -type f -user root -exec chown arthur {} \;
+  rev - reverse lines of a file or files
+  ```shell
+  cat TODO.md
 
-# copy all found files to another folder
-find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
+  1. network optimization: classid in linux network
 
-# 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本
--exec ./task.sh {} \;
-```
+  rev TODO.md
 
-count how many files in current folder:
-```shell
-find . | wc -l
+  krowten xunil ni dissalc :noitazimitpo krowten .1
+  ```
 
-# list all files in current dir, and number them
-ls | cat -n # `-n` number all output lines
+1. <a name="find">find</a>
 
-    1  LICENSE
-    2  README.md
-    3  bash
-    4  compile
-    5  git
-    6  profiling.md
-    7  tmux.md
-```
+  ```shell
+  # find and remove all `*.pyc` files, recursively
+  find . -name "*.pyc" -exec rm -f {} \; # remove file
 
-```shell
-# find all .txt
-find . -name "*.txt"
+  find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
 
-# find all files except .txt
-find . ! -name "*.txt"
+  # rename all .dsc files to .dsc.bak
+  find . -name “.dsc” | xargs -I{} mv {} {}.bak
 
-# specify search depth
-find . -maxdepth 1 -type f
-```
+  # 将当前目录下的所有权变更为arthur
+  # {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名
+  find . -type f -user root -exec chown arthur {} \;
 
-find by ***time/size/permission/***:
+  # copy all found files to another folder
+  find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
 
-| command | effects |
-| :------ | :------------ |
-| find . -atime 7 -type f | 最近`第7天`被访问过的所有文件 |
-| find . -atime -7 -type f | 最近`7天内`被访问过的所有文件 |
-| find . -atime +7 -type f | `7天前`被访问过的所有文件 |
-| find . -type f -size +2k | 寻找大于2k的文件 |
-| `find . -size 0 | xargs rm -f &` | remove zero size files |
-| find . -type f -perm 644 | 找具有可执行权限的所有文件 |
-| find . -type f -user arthur | find all files owned by `arthur` |
+  # 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本
+  -exec ./task.sh {} \;
+  ```
 
+  count how many files in current folder:
+  ```shell
+  find . | wc -l
 
-<a name="file"></a>
-## show file info, such as file type
-```shell
-file README.md
+  # list all files in current dir, and number them
+  ls | cat -n # `-n` number all output lines
 
-# find all executables in current dir
-ls -lrt | awk '{print $9}'|xargs file|grep  ELF| awk '{print (}'|tr -d ':')
-```
+      1  LICENSE
+      2  README.md
+      3  bash
+      4  compile
+      5  git
+      6  profiling.md
+      7  tmux.md
+  ```
 
+  ```shell
+  # find all .txt
+  find . -name "*.txt"
 
-<a name="dd"></a>
-## convert and copy a file.
-Copy a file, converting and formatting according to the operands.
+  # find all files except .txt
+  find . ! -name "*.txt"
 
-Example, generate 1GB test file with random data:
-```shell
-dd if=/dev/urandom of=testdata bs=1M count=1024
+  # specify search depth
+  find . -maxdepth 1 -type f
+  ```
 
-# if: read from file instead of stdin
-# of: write to file instead of stdout
-# bs: read and write BYTES bytes at a time (also see ibs=,obs=)
-# count: copy only N input blocks
-```
+  find by ***time/size/permission/***:
 
-<a name="tar"></a>
-## create/extract archives
-`Tar` comes from `Tape Archiver`, it is a POSIX standard.
-`tar` only packs files (result in `.tar` files), if you want compress them,
-you need to specify a compression method, e.g, `bzip2` (`.tar.bz2`),
-`gzip` (`.tar.gz`).
-
-```shell
-# put all files in `/home/xxx/testdir/` into a new created archive, and
-# compress it with `gzip` format
-tar pczf test.tar.gz /home/xxx/testdir
-
-# `p` - preserve file attributes and priviledges
-# `c` - create new file
-# `z` - compress with gzip
-# `f` - create new archive file, otherwise the output will be `stdout`
+  | command | effects |
+  | :------ | :------------ |
+  | find . -atime 7 -type f | 最近`第7天`被访问过的所有文件 |
+  | find . -atime -7 -type f | 最近`7天内`被访问过的所有文件 |
+  | find . -atime +7 -type f | `7天前`被访问过的所有文件 |
+  | find . -type f -size +2k | 寻找大于2k的文件 |
+  | `find . -size 0 | xargs rm -f &` | remove zero size files |
+  | find . -type f -perm 644 | 找具有可执行权限的所有文件 |
+  | find . -type f -user arthur | find all files owned by `arthur` |
 
 
-# extract files
-tar xzvf test.tar.gz
-# 'x' - extract
-# 'z' - gzip compressed
-# 'v' - verbose
-# 'f' - read from a file (`test.tar.gz`)
-```
+
+1. file <a name="file"></a>
+
+  show file info, such as file type
+
+  ```shell
+  file README.md
+
+  # find all executables in current dir
+  ls -lrt | awk '{print $9}'|xargs file|grep  ELF| awk '{print (}'|tr -d ':')
+  ```
+
+1. tee <a name="tee"></a>
+
+  将标准输入的内容复制到文件或者标准输出，就像 `ls -al | tee file.txt`
+
+1. <a name="dd">dd</a>
+
+  Copy a file, converting and formatting according to the operands.
+  在文件或设备间传输数据
+
+  Example, generate 1GB test file with random data:
+  ```shell
+  dd if=/dev/urandom of=testdata bs=1M count=1024
+
+  # if: read from file instead of stdin
+  # of: write to file instead of stdout
+  # bs: read and write BYTES bytes at a time (also see ibs=,obs=)
+  # count: copy only N input blocks
+  ```
+
+1. <a name="tar">tar</a>
+
+  create/extract archives
+
+  `Tar` comes from `Tape Archiver`, it is a POSIX standard.
+  `tar` only packs files (result in `.tar` files), if you want compress them,
+  you need to specify a compression method, e.g, `bzip2` (`.tar.bz2`),
+  `gzip` (`.tar.gz`).
+
+  ```shell
+  # put all files in `/home/xxx/testdir/` into a new created archive, and
+  # compress it with `gzip` format
+  tar pczf test.tar.gz /home/xxx/testdir
+
+  # `p` - preserve file attributes and priviledges
+  # `c` - create new file
+  # `z` - compress with gzip
+  # `f` - create new archive file, otherwise the output will be `stdout`
+
+
+  # extract files
+  tar xzvf test.tar.gz
+  # 'x' - extract
+  # 'z' - gzip compressed
+  # 'v' - verbose
+  # 'f' - read from a file (`test.tar.gz`)
+  ```
+
+1. <a name="rename">rename</a>
+
+  batch rename tools

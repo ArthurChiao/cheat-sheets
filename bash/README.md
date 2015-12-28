@@ -7,7 +7,7 @@ bash commands
 
 1. [file options](file.md)
 
-  `df`, `du`, `rev`, `find`, `dd`, `tar`
+  `df`, `du`, `rev`, `find`, `tee`, `dd`, `tar`, `rename`
 
 1. [process options](proc.md)
 
@@ -57,3 +57,9 @@ bash commands
   sar -n TCP,ETCP 1
   top
   ```
+
+1. [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line)
+
+  **Tutorial on `github` with 21K stars and 2K forks.**
+
+  Chinease version [这篇文章可以帮你掌握命令行的艺术](http://blog.jobbole.com/90364/)
