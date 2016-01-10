@@ -27,6 +27,8 @@ bash commands
 
 1. [built-in macros](macro.md)
 
+1. [bash mode](bash-mode.md)
+
 
 --------------------
 
