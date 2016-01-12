@@ -83,6 +83,8 @@ into many `panels`.
 <leader> K # enlarge current panel to up (my customed binding)
 <leader> L # enlarge current panel to right (my customed binding)
 
+<leader> z # maximize/restore current panel
+
 # move panel
 <leader> { # move panel to left/up
 <leader> } # move panel to right/bottom
