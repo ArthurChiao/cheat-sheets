@@ -11,7 +11,7 @@ bash commands
 
 1. [process options](proc.md)
 
-  `pgrep`, `pkill`, `strace`, `ltrace`
+  `pgrep`, `pkill`, `strace`, `ltrace`, `ps`
 
 1. [text processing](text.md)
 
