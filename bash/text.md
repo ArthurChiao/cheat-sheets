@@ -19,6 +19,9 @@ text processing
 
   # find text lines containing `AAA` but not containing `BBB`, count lines
   cat -v record.log | grep AAA | grep -v BBB | wc -l
+
+  # regular expression: find lines DO NOT contain character `e`
+  cat test.txt | grep -v 'e.*'
   ```
 
 1. `tr` - 可以完成简单的字符转换任务
