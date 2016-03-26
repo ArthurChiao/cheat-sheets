@@ -138,7 +138,18 @@
 
 1. tee <a name="tee"></a>
 
-  将标准输入的内容复制到文件或者标准输出，就像 `ls -al | tee file.txt`
+  > tee - read from standard input and write to standard output and files
+
+  将标准输入的内容复制到文件或者标准输出
+
+  ```shell
+  $ ls -al | tee file.txt`
+
+  $ cat input.txt | tee output.txt
+  ```
+
+  source code of tee is [here](http://www.opensource.apple.com/source/shell_cmds/shell_cmds-18/tee/tee.c),
+  really simple, just couples of lines.
 
 1. <a name="dd">dd</a>
 
