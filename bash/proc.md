@@ -49,4 +49,29 @@ $ kill -l # see which signals your system implements
 48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
 53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
 58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+
+# Retrieve a list of the pids of child processes of the given pid
+$ ps --ppid <pid> -o pid=
+
+$ ps --ppid 1 -o pid=
+366
+758
+787
+804
+864
+868
+871
+872
+874
+896
+912
+960
+1045
+1165
+2151
+2797
+10442
+18860
+18863
+18866
 ```
