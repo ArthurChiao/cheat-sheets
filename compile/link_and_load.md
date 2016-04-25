@@ -9,6 +9,7 @@ linking, loading, inspecting tools
 1. [inspect memory mapping](#inspect memory mapping)
 1. [readelf](#readelf)
 1. [ld](#ld)
+1. [modinfo](#modinfo)
 1. [reference](#reference)
 
 <h2 id="nm">nm - list symbols from object files</h2>
@@ -84,6 +85,20 @@ gcc -fPIC -shared -Wall -o libtest.so test.c
 gcc -fPIC -shared -Wall -Wl,-soname,libtest.so.0  -o libtest.so.0.0.0 test.c
 ```
 
+<h2 id="modinfo">modinfo - show module information</h2>
+```shell
+$ modinfo openvswitch
+filename:       /lib/modules/3.13.0-32-generic/kernel/net/openvswitch/openvswitch.ko
+license:        GPL
+description:    Open vSwitch switching datapath
+srcversion:     47D3079FB6731A4B46CED6E
+depends:        libcrc32c,vxlan,gre
+intree:         Y
+vermagic:       3.13.0-32-generic SMP mod_unload modversions
+signer:         Magrathea: Glacier signing key
+sig_key:        5E:3C:0F:xx:9E:84:F1:6D:A7:C7
+sig_hashalgo:   sha512
+```
 
 # Reference
 -------------
