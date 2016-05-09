@@ -100,6 +100,11 @@
       7  tmux.md
   ```
 
+  how many lines of python code in current folder:
+  ```shell
+  find . -name *.py | xargs cat | wc -l
+  ```
+
   ```shell
   # find all .txt
   find . -name "*.txt"
