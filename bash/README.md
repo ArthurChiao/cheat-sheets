@@ -15,7 +15,7 @@ bash commands
 
 1. [text processing](text.md)
 
-  `grep`, `tr`, `sed`, `uniq`, `wc`
+  `grep`, `tr`, `sed`, `uniq`, `wc`, `basename`, `dirname`, `readlink`
 
 1. [network tools](network.md)
 

@@ -1,7 +1,19 @@
 text processing
 =================
 
-1. `grep`
+Index:
+
+1. [grep](#grep)
+1. [tr](#tr)
+1. [sed](#sed)
+1. [uniq](#uniq)
+1. [sort](#sort)
+1. [wc](#wc)
+1. [basename/dirname/readlink](#basename_dirname_readlink)
+
+---------------
+
+1. <a name="grep">`grep`</a>
 
   | Command  |  Function |
   | :-------- |  :--------- |
@@ -24,7 +36,7 @@ text processing
   cat test.txt | grep -v 'e.*'
   ```
 
-1. `tr` - 可以完成简单的字符转换任务
+1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
 
   ```shell
   # 把 grephelp.txt 文件转换为全文大写
@@ -32,7 +44,7 @@ text processing
   ```
   简而言之，tr 的工作就是把第一个集合中的字符转换为第二个集合中的相应的字符。
 
-1. `sed`
+1. <a name="sed">`sed`</a>
 
   tr 命令的应用场景非常受限，如果希望进行更加灵活的模式替换，我们还有 sed（也就是 stream editor，流编辑器）。
   ```shell
@@ -51,7 +63,8 @@ text processing
   MY_CURRENT_BRANCH=$(cat .git/HEAD | sed 's/ref: //g')
   ```
 
-1. `uniq` - remove repeated lines
+1. <a name="uniq">`uniq` - remove repeated lines</a>
+
   ```shell
   uniq a.txt # print a.txt, omit repeated lines
 
@@ -69,23 +82,56 @@ text processing
   cat a b b | sort | uniq -u > c
   ```
 
-1. `sort` - sort text line
+1. <a name="sort">`sort` - sort text line</a>
   ```shell
   sort report.txt # sort by alphabet order
 
   sort -u report.txt # unique and sort, remove repeated lines
   ```
 
-1. `wc` - word count
-   ```shell
-   `-c` - count bytes
-   `-m` - count chars
-   `-w` - count words
-   `-l` - count lines
+1. <a name="wc">`wc` - word count</a>
 
-   # see how many unique lines in a.txt
-   uniq a.txt | wc -l
+  ```shell
+  `-c` - count bytes
+  `-m` - count chars
+  `-w` - count words
+  `-l` - count lines
+
+  # see how many unique lines in a.txt
+  uniq a.txt | wc -l
    ```
+
+1. <a name="basename_dirname_readlink">`basename`, `dirname`, `readlink`</a>
+
+  `basename` - trip directory and suffix from filenames
+  ```shell
+  $ basename /usr/bin/sort
+  sort
+
+  $ basename include/stdio.h .h
+  stdio
+
+  # -s: with suffix
+  $ basename -s .h include/stdio.h
+  stdio
+
+  # -a: multiple arguments, each treat as a file
+  $ basename -a any/str1 any/str2
+  str1
+  str2
+  ```
+
+  `dirname` - strip last component from file name
+  ```shell
+  $ dirname /home/client.c
+  home
+  ```
+
+  `readlink` - print resolved symbolic links or canonical file names
+  ```shell
+  $ readlink -f /usr/bin/python
+  /usr/bin/python2.7
+  ```
 
 
 # Reference
