@@ -19,6 +19,10 @@ A collection of some most frequently used tools, commands.
 
   Tmux is fantastic.
 
+1. [ctags](ctags.md)
+
+  Ctags skills.
+
 1. [markdown](markdown.md)
 
   Yet another fantastic tool.
