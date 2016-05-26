@@ -21,19 +21,23 @@ Index:
   | -B n   | 保留匹配行下面n行上下文 |
   | -R     | recursively into sub-folders |
   | -v     | find lines that do not contain the text specified |
+  | `--include *.cpp` | only search in `.cpp` files |
+  | `--exclude *.cpp` | skip `.cpp` files |
 
   ```shell
   # grep word `session`, retain uppper and down context (each 2 lines)
-  grep -A 2 -B 2 -R session *
+  $ grep -A 2 -B 2 -R session *
 
   # find lines do not include `session` in a.txt
-  grep -v session a.txt
+  $ grep -v session a.txt
 
   # find text lines containing `AAA` but not containing `BBB`, count lines
-  cat -v record.log | grep AAA | grep -v BBB | wc -l
+  $ cat -v record.log | grep AAA | grep -v BBB | wc -l
 
   # regular expression: find lines DO NOT contain character `e`
-  cat test.txt | grep -v 'e.*'
+  $ cat test.txt | grep -v 'e.*'
+
+  $ grep -R --include *.cpp keyword
   ```
 
 1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
