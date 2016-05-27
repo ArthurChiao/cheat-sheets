@@ -3,6 +3,8 @@ cheat sheets of command line tools
 
 A collection of some most frequently used tools, commands.
 
+--------------
+
 1. [bash](bash/)
 
   Welcome to the world of command line arts.
@@ -30,3 +32,17 @@ A collection of some most frequently used tools, commands.
 1. [OS specific](os-specific/)
 
   Platform specific commands, Redhat/CentOS/Debian/Ubuntu/OpenSUSE/Windows/...
+
+
+---------
+
+# Episodes
+
+1. Why collecting so many tools?
+
+  > Invest in time-saving tools.
+  > Don’t keep doing what a machine could have done for you.
+
+  from [*Five Key Mindsets that Separate Successful Programmers from Everyone Else*](http://www.theeffectiveengineer.com/blog/five-key-skills-of-successful-programmers#rd).
+
+  Chinease version [顶尖程序员不同于常人的5个区别](http://www.jianshu.com/p/05de8f667eea)
