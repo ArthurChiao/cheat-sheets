@@ -130,6 +130,18 @@ misc commands
   ```
   Try and see what happens!
 
+1.list supported shells of your system
+
+  ```shell
+  $ cat /etc/shells
+  # /etc/shells: valid login shells
+  /bin/sh
+  /bin/dash
+  /bin/bash
+  /bin/rbash
+  /usr/bin/tmux
+  /usr/bin/screen
+  ```
 
 ------------
 
