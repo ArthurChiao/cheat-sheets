@@ -5,6 +5,7 @@
 1. [strace](#strace)
 1. [ltrace](#ltrace)
 1. [ps](#ps)
+1. [kill/pkill](#kill)
 
 ---------
 
@@ -74,20 +75,6 @@
   1000 16517 0000000000000000 0000000000000000 0000000000081802 0000000188034201 S+   pts/1      0:00 tmux att
   1000 16759 0000000000000000 0000000000000000 0000000000000000 0000000073d3fef9 R+   pts/15     0:00 ps s
 
-  $ kill -l # see which signals your system implements
-  1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
-  6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
-  11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
-  16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
-  21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
-  26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
-  31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
-  38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
-  43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
-  48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
-  53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
-  58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
-
   # Retrieve a list of the pids of child processes of the given pid
   $ ps --ppid <pid> -o pid=
 
@@ -113,6 +100,59 @@
   18863
   18866
   ```
+
+1. <a name="kill">kill/pkill</a>
+
+  Despite its misleading name, `kill/pkill` is actually a tool to send
+  specific signals to a running process - kill the process is actually only
+  one of its many functionalities.
+
+  * `kill` - send a signal to a process, specify the **process ID**.
+  * `pkill` - send a signal to a process, specify the **process name**.
+
+  see which signals your system implements:
+  ```shell
+  $ kill -l
+  1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+  6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+  11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+  16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+  21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+  26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+  31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+  38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+  43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+  48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+  53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+  58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+  ```
+
+  If no signal specified, `kill/pkill` will
+  send `SIGTERM` to the process, which asks the process to kill itself.
+  However, the process can be set to ignore this signal (through register
+  signal handler), so `kill <process id>` does not always kills a process.
+
+  A more bruteforce way to kill a process is by passing `-9` to `kill/pkill`
+  which sends `SIGKILL`. Note that this signal will not be sent to the process,
+  but to the `init` process - the parent process of all other processes in the
+  system (which means an ordinary process can not ignore this signal).
+  On receiving this signal, `init` process kills the specified process
+  immediatly.
+
+  examples, kill an running process named `apache2`:
+  ```shell
+  $ ps -e | grep apche2
+  24161 ?        00:00:10 apache2
+
+  # send SIGTERM signal to the apache2 process, using kill/pkill
+  $ kill 24161 # same as kill -15 24161
+  $ pkill apache2 # same as pkill -15 apache2
+
+  # send SIGKILL signal to the apache2 process
+  $ kill -9 24161
+  $ pkill -9 apache2 # same as pkill -9 apache2
+  ```
+
 
 ----------
 
