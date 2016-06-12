@@ -21,8 +21,8 @@ Index:
   | -B n   | 保留匹配行下面n行上下文 |
   | -R     | recursively into sub-folders |
   | -v     | find lines that do not contain the text specified |
-  | `--include *.cpp` | only search in `.cpp` files |
-  | `--exclude *.cpp` | skip `.cpp` files |
+  | `--include=*.cpp` | only search in `.cpp` files |
+  | `--exclude=*.cpp` | skip `.cpp` files |
 
   ```shell
   # grep word `session`, retain uppper and down context (each 2 lines)
@@ -38,6 +38,8 @@ Index:
   $ cat test.txt | grep -v 'e.*'
 
   $ grep -R --include *.cpp keyword
+
+  $ grep -R --exclude=*.svg --exclude=*.js 400 # grep `400`
   ```
 
 1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
