@@ -59,7 +59,9 @@ tmux commands
   
   <leader> p # previous window
   <leader> n # next window
-  <leader> <N> # jump to window N
+  <leader> <N> # jump to window N, where 0 <= N <=9
+  <leader> ' # (single quote) select windows by index
+             # for those windows with index > 9, jump to them with this command
   
   <leader> , # rename window
   
