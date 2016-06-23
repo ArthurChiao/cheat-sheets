@@ -21,6 +21,10 @@ bash commands
 
   `netstat`
 
+1. [time utils](time.md)
+
+  `date`
+
 1. [misc commands/tools](misc.md)
 
   `bind`, `compgen`, `disown`, `hash`
