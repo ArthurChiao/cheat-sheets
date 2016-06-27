@@ -61,5 +61,10 @@ ctags
   YACC
 
   # only include PHP files, note that language name is case-sensitive
-  $ ctags -R --languages=PHP ./*
+  $ ctags -R --languages=PHP *
+
+  # .h files are classified into C++ files, see `man ctags` for details
+  # so we need to add `C++` to `--languages` option for C projects,
+  # otherwise `.h` files will not be included
+  $ ctags -R --languages=C,C++ *
   ```
