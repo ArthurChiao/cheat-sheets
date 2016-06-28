@@ -5,6 +5,7 @@ Index:
 1. [git push](git-push.md)
 1. [git pull](git-pull.md)
 1. [git ignore](git-ignore.md)
+1. [git submodule](git-submodule.md)
 
 ------------
 
