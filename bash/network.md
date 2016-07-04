@@ -26,7 +26,7 @@ network tools/commands
 1. [simple web server in two lines](http://www.slideshare.net/mestery/openstack-neutron-tutorial)
 
   ```shell
-  MYIP=$(ifconfig eth0 | grep 'inet addr' | awk -F: '{print [}' | awk '{print (}')
+  MYIP=$(ifconfig eth0 | grep 'inet addr' | awk -F: '{print $1}' | awk '{print $2}')
   while true; do echo -e "HTTP/1.0 200 OK\r\n\r\nWelcome to $MYIP" | sudo nc -l -p 80; done)]
   ```
   the first command get the ip address on `eth0`, the second command starts a

@@ -12,7 +12,7 @@ misc commands
 
 
   ```shell
-  bind '"\e[24~":"date"'
+  $ bind '"\e[24~":"date"'
   ```
 
 1. `type`
@@ -43,13 +43,13 @@ misc commands
 1. 打印出所有支持的命令列表
 
   ```shell
-  compgen -c
+  $ compgen -c
   ```
 
 1. 在不重启机器的条件下，有什么方法可以把所有正在运行的进程移除呢？
 
   ```shell
-  disown -r
+  $ disown -r
   ```
 
 1. `hash`
@@ -130,7 +130,7 @@ misc commands
   ```
   Try and see what happens!
 
-1.list supported shells of your system
+1. list supported shells of your system
 
   ```shell
   $ cat /etc/shells

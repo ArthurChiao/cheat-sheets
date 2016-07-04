@@ -21,6 +21,8 @@ Index:
   | -B n   | 保留匹配行下面n行上下文 |
   | -R     | recursively into sub-folders |
   | -v     | find lines that do not contain the text specified |
+  | -i     | case insensitive |
+  | -n     | show line number of matched lines |
   | `--include=*.cpp` | only search in `.cpp` files |
   | `--exclude=*.cpp` | skip `.cpp` files |
 
