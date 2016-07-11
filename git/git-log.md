@@ -25,6 +25,63 @@ Index:
   git diff commit1:filepath commit2:filepath
   ```
 
+  Show commit history in pretty will format:
+
+  ```shell
+  $ git log --oneline --graph --all --decorate
+  *   194b962 (origin/master, origin/HEAD, master) Merge branch 'develop': update cheat sheets
+  |\
+  | * 8adcc14 (HEAD, develop) update builtin.md
+  | * d596482 update cheat sheets
+  |/
+  * cc2df9d update cheat sheets
+  * 715dd48 update README.md
+  * 7d606f3 update builtin commands in cheat sheets
+  * f9b9eb5 update README.md
+  * 5b34613 update cheat-sheets: relativenumber and indent
+  * e928a14 update README: add compile vim from source for centos
+  * a768de1 add update.sh
+
+  $ git log --graph --all --decorate
+  *   commit 194b9620221bcbd95ffd114d0f30a471ed3dc81d (origin/master, origin/HEAD, master)
+  |\  Merge: cc2df9d 8adcc14
+  | | Author: arthurchiao <arthurchiao@hotmail.com>
+  | | Date:   Mon Jul 11 10:05:41 2016 +0800
+  | |
+  | |     Merge branch 'develop': update cheat sheets
+  | |
+  | * commit 8adcc148bf8aa2bb33d98a8904554420a55606cd (HEAD, develop)
+  | | Author: arthurchiao <arthurchiao@hotmail.com>
+  | | Date:   Sun Jul 10 09:40:43 2016 +0800
+  | |
+  | |     update builtin.md
+  | |
+  | * commit d596482319f966f279055ea39c38e82206e3be2b
+  |/  Author: arthurchiao <arthurchiao@hotmail.com>
+  |   Date:   Fri Jul 8 18:43:40 2016 +0800
+  |
+  |       update cheat sheets
+  |
+  * commit cc2df9de1b7433164b4ebacec2a6d8880662e439
+  | Author: arthurchiao <arthurchiao@hotmail.com>
+  | Date:   Thu Jul 7 16:23:23 2016 +0800
+  |
+  |     update cheat sheets
+  |
+  * commit 715dd48c81c51c4b42085e585ec7f87d8fe43578
+  | Author: arthurchiao <arthurchiao@hotmail.com>
+  | Date:   Tue Jul 5 13:09:03 2016 +0800
+  |
+  |     update README.md
+  |
+  * commit 7d606f3aab0b36ba60f28112b6cebb4aa809553a
+  | Author: arthurchiao <arthurchiao@hotmail.com>
+  | Date:   Tue Jul 5 12:34:49 2016 +0800
+  |
+  |     update builtin commands in cheat sheets
+  |
+  ```
+
 1. <a name="no_merges">Exclude merges in commits</a>
 
   In large projects, there will be a robot program (e.g. jenkins) who runs the
