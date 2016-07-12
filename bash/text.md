@@ -25,6 +25,7 @@ Index:
   | -n     | show line number of matched lines |
   | `--include=*.cpp` | only search in `.cpp` files |
   | `--exclude=*.cpp` | skip `.cpp` files |
+  | `--exclude-dir=tests` | skip `tests` directory in current folder |
 
   ```shell
   # grep word `session`, retain uppper and down context (each 2 lines)
@@ -43,6 +44,16 @@ Index:
 
   $ grep -R --exclude=*.svg --exclude=*.js 400 # grep `400`
   ```
+
+  **grep also supports Chinese**:
+
+  ```shell
+  $ grep -R "您没有权限来上传" *
+  apps/files/l10n/zh_CN.js:    "You don’t have permission to upload or create files here" : "您没有权限来上传湖州哦和创建文件",
+  apps/files/l10n/zh_CN.json:    "You don’t have permission to upload or create files here" : "您没有权限来上传湖州哦和创建文件",
+  ```
+
+  **Perfect!**
 
 1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
 
