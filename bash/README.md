@@ -19,7 +19,7 @@ bash commands
 
 1. [network tools](network.md)
 
-  `netstat`
+  `netstat`, `lsof`
 
 1. [time utils](time.md)
 
