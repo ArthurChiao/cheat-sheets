@@ -143,6 +143,12 @@ misc commands
   /usr/bin/screen
   ```
 
+1. print all environment variables
+
+   ```shell
+   $ printenv
+   ```
+
 ------------
 
 ## References

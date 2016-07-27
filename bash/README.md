@@ -27,7 +27,7 @@ bash commands
 
 1. [misc commands/tools](misc.md)
 
-  `bind`, `compgen`, `disown`, `hash`
+  `bind`, `compgen`, `disown`, `hash`, `printenv`
 
 1. [built-in macros](macro.md)
 
