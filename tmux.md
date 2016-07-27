@@ -12,22 +12,25 @@ tmux commands
 
 ------------------
 
-`<leader>` key: default `ctl+b`, I like to bind it to `ctl+j`
+`<leader>` key: default `ctl-b`, but I prefer to bind it to `ctl-j`, because
+`j` is the key that your finger rests at, thus this binding doesn't hurts your
+(left) fingers too much.
 
 1. <a name="tmux_shell_commands">basic tmux commands in shell</a>
   ```shell
-  tmux # create new session
-  tmux new -s <session name> # create new session, specify name
+  $ tmux                       # create new session
+  $ tmux new -s <session name> # create new session, specify name
+
   # e.g. create and delete sessions
-  tmux new -s session_1 # create new session, session name `session_1`
-  tmux kill-session -t session_1 # kill `session_1`
+  $ tmux new -s session_1          # create new session, session name `session_1`
+  $ tmux kill-session -t session_1 # kill `session_1`
   
-  tmux ls # list all sessions
+  $ tmux ls # list all sessions
   
-  tmux att # attach existing session
-  tmux a -t <session name> # attach existing session
+  $ tmux a                   # attach existing session
+  $ tmux a -t <session name> # attach existing session
   
-  tmux kill-session -t <session name> # delete specified session
+  $ tmux kill-session -t <session name> # delete specified session
   ```
 
 1. <a name="tmux_help">help</a>
@@ -54,56 +57,62 @@ tmux commands
   into many `panels`.
   
   ```shell
+  # window
   <leader> c # create new window
   <leader> & # delete window
   
   <leader> p # previous window
   <leader> n # next window
   <leader> <N> # jump to window N, where 0 <= N <=9
-  <leader> ' # (single quote) select windows by index
-             # for those windows with index > 9, jump to them with this command
-  
   <leader> , # rename window
-  
-  <leader> f # search in multiple windows
-  
   
   <leader> - # split panel horizontally (my customed binding)
   <leader> | # split panel vertically (my customed binding)
   <leader> x # delete panel
   
-  # move between panels
+  # move between panes
   <leader> o # move sequentially between panels
-  <leader> h # move to left panel (my customed binding)
-  <leader> j # move to bottom panel (my customed binding)
-  <leader> k # move to up panel (my customed binding)
-  <leader> l # move to right panel (my customed binding)
+  <leader> h # move to left pane (my customed binding)
+  <leader> j # move to bottom pane (my customed binding)
+  <leader> k # move to up pane (my customed binding)
+  <leader> l # move to right pane (my customed binding)
   
-  # adjust panel size
-  <leader> H # enlarge current panel to left (my customed binding)
-  <leader> J # enlarge current panel to bottom (my customed binding)
-  <leader> K # enlarge current panel to up (my customed binding)
-  <leader> L # enlarge current panel to right (my customed binding)
+  # adjust pane size
+  <leader> z # maximize/restore current pane
+  <leader> H # enlarge current pane to left (my customed binding)
+  <leader> J # enlarge current pane to bottom (my customed binding)
+  <leader> K # enlarge current pane to up (my customed binding)
+  <leader> L # enlarge current pane to right (my customed binding)
+
+  # move pane
+  <leader> { # move pane to left/up
+  <leader> } # move pane to right/bottom
   
-  <leader> z # maximize/restore current panel
+  <leader> whitespace # change pane layout
+  <leader> ctl-o # move pane sequentially
+  ```
+
+  Advanced:
+
+  ```shell
+  # window
+  <leader> . # prompt for an index, move current window to there (change window index)
+  <leader> w # list windows list, choose window interactively (move up/down with `ctl-p`/`ctl-n`)
+  <leader> ' # (single quote) select windows by index
+             # for those windows with index > 9, jump to them with this command
   
-  # move panel
-  <leader> { # move panel to left/up
-  <leader> } # move panel to right/bottom
-  
-  <leader> + whitespace # change panel layout
-  <leader> ctrl+o # move panel sequentially
+  # pane
+  <leader> ; # move to the previous active pane
+  <leader> ! # break current pane out, to a new window
   ```
 
 1. <a name="tmux_search">Search in Output Window</a>
   ```shell
-  <leader> [ # enter history buffer
-  ctl + r # search in window
+  <leader> [ # enter copy mode, history buffer
+  <leader> ] # paste
   ```
 
 1. <a name="tmux_other_commands">others</a>
   ```shell
-  <leader> [ # enter copy mode
-  
   <leader> t # show current time
   ```
