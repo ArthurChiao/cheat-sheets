@@ -60,3 +60,30 @@ netstat
   tcp        0      0 localhost:50225         localhost:epmd          ESTABLISHED rabbitmq   12447
   tcp6       0      0 localhost:epmd          localhost:50225         ESTABLISHED rabbitmq   10739
   ```
+
+## Examples
+1. list ports/connections opened by a certain process/program
+
+  Suppose you started a program:
+  ```shell
+  $ python consumer.py
+  ```
+
+  How to list all the ports/connections this program opens?
+
+  First, use `ps` to get the process ID:
+
+  ```shell
+  $ ps -ef | grep publisher
+  root     15225  5615 12 12:15 pts/16   00:14:15 python consumer.py
+  ```
+
+  Then, list all connections with `netstat` and fileter the result with process ID:
+
+  ```shell
+  $ netstat -tep | grep 15225
+  tcp        0     28 192.168.1.10:36578 192.168.1.11:amqp ESTABLISHED root       97845485    155225/python
+
+  # or
+  $ netstat --all --program | grep 15225
+  ```
