@@ -55,6 +55,12 @@ Index:
 
   **Perfect!**
 
+  **count lines of effective Python code**, ignore blank lines and comment lines (start with `#`):
+
+  ```shell
+  $ grep -v '^ *\(#.*\)\?$' test.py | wc -l
+  ```
+
 1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
 
   ```shell
