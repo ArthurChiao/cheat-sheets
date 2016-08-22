@@ -10,6 +10,7 @@ Index:
 1. [sort](#sort)
 1. [wc](#wc)
 1. [basename/dirname/readlink](#basename_dirname_readlink)
+1. [awk](#awk)
 
 ---------------
 
@@ -158,6 +159,21 @@ Index:
   /usr/bin/python2.7
   ```
 
+1. <a name="awk">`awk`</a>
+
+  Remove all duplicated lines in a file ([Blog](http://www.infoworld.com/article/2985804/linux/remember-sed-awk-linux-admins-should.html)):
+
+  ```shell
+  $ awk '!seen[$0]++' file
+  ```
+
+  This answer is the most concise and simplest solution to the problem.
+  It's the same effect with the following code, which is more readable:
+
+  ```shell
+  $ awk '{ if (!seen[$0]) print $0; seen[$0]++ }'
+  ```
 
 # Reference
-1. [使用 Linux/Unix 进行文本处理](https://linux.cn/article-6611-1.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+1. [使用 Linux/Unix 进行文本处理](https://linux.cn/article-6611-1.html)
+1. [[译] awk & sed ，一个老派系统管理员的基本素养](https://linux.cn/article-6881-1.html)
