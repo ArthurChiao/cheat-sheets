@@ -89,6 +89,64 @@ Index:
   MY_CURRENT_BRANCH=$(cat .git/HEAD | sed 's/ref: //g')
   ```
 
+  **Using search results:**
+  ```shell
+  $ cat test.txt
+  5555551214
+  6665551216
+  777555121
+
+  $ sed -e 's/^[[:digit:]][[:digit:]][[:digit:]]/(&)/g' test.txt
+  (555)5551214
+  (666)5551216
+  (777)5551217
+
+  # -e: use multiple sed commands
+  $ sed -e 's/^[[:digit:]]\{3\}/(&)/g'  \
+      -e 's/)[[:digit:]]\{3\}/&-/g' phone.txt
+  (555)555-1214
+  (666)555-1216
+  (777)555-1217
+  ```
+
+  ----------
+
+  **Replacing macro in C file**
+
+  Some C/C++ projects use special MACROs to generate cross-platform code, e.g.
+  a macro `PJ_DEF` defines something like this:
+
+  ```c
+  #ifdef WIN_DLL
+  #define PJ_DEF __dllexport__
+  #else
+  #define PJ_DEF // do nothing
+  #endif
+  ```
+
+  Then a function definition looks like this:
+  ```c
+  PJ_DEF(pj_status_t) pj_fun_a(int a, int b) {
+      // function body
+  }
+  ```
+
+  This is an excellent idea, however, it prohibits `ctags` from generating the
+  proper tags file, and thus can not find the definition as you jumping code.
+  If just intend to browsing the code, you could use `sed` to remove those
+  "annoying" `PJ_DEF`s:
+
+  ```shell
+  $ cd project_dir
+
+  $ find . -name *.c | xargs sed -i 's/^PJ_DEF//g'
+
+  $ ctags -R --languages=C,C++ *
+  ```
+
+  Now ctags works OK!
+
+
 1. <a name="uniq">`uniq` - remove repeated lines</a>
 
   ```shell
