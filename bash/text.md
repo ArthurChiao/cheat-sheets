@@ -70,6 +70,13 @@ Index:
   ```
   简而言之，tr 的工作就是把第一个集合中的字符转换为第二个集合中的相应的字符。
 
+  **Generate random string** (characters including \_A-Z-a-z-0-9):
+
+  ```shell
+  $ cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c 16
+  I05sa1DMEkK5cgx6
+  ```
+
 1. <a name="sed">`sed`</a>
 
   tr 命令的应用场景非常受限，如果希望进行更加灵活的模式替换，我们还有 sed（也就是 stream editor，流编辑器）。
