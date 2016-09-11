@@ -35,7 +35,7 @@
   5883 pts/19   00:00:00 docker
   ```
 
-1. <a name="trace">strace</a>
+1. <a name="strace">strace</a>
 
   `strace` - trace system call and signals of the given process/program.
 
@@ -43,6 +43,8 @@
 
     * trace a process at start up: by prefixing "strace" before your command:
     * trace an existing process: pass process ID with `-p` option
+
+  Each line of the output shows a system call. Examples:
 
   ```shell
   # trace `ls -lh /var/log/`
@@ -54,10 +56,78 @@
   $ strace -p 17553
   ```
 
-  Highly recommend this article: [运维利器：万能的 strace](http://mp.weixin.qq.com/s?__biz=MzA4Nzg5Nzc5OA==&mid=2651659767&idx=1&sn=3c515cb32bcbcafe16c749024d1545ef&scene=0#wechat_redirect)
+  Trace following c program, source file `pid.c`:
 
+  ```c
+  #include<stdio.h>
+  #include<stdlib.h>
+  #include<sys/types.h>
+  #include<unistd.h>
 
-1. <a name="trace">ltrace</a>
+  int main(int argc, char *argv[])
+  {
+    pid_t p = getpid();
+    printf("%d\n", p);
+    return 0;
+  }
+  ```
+
+  ```shell
+  $ gcc -o pid pid.c
+
+  $ strace ./pid
+  execve("./pid", ["./pid"], [/* 22 vars */]) = 0
+  brk(0)                                  = 0x1cce000
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ff9bf26e000
+  access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+  open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+  fstat(3, {st_mode=S_IFREG|0644, st_size=38280, ...}) = 0
+  mmap(NULL, 38280, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7ff9bf264000
+  close(3)                                = 0
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+  read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320\37\2\0\0\0\0\0"..., 832) = 832
+  fstat(3, {st_mode=S_IFREG|0755, st_size=1845024, ...}) = 0
+  mmap(NULL, 3953344, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7ff9bec88000
+  mprotect(0x7ff9bee43000, 2097152, PROT_NONE) = 0
+  mmap(0x7ff9bf043000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bb000) = 0x7ff9bf043000
+  mmap(0x7ff9bf049000, 17088, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7ff9bf049000
+  close(3)                                = 0
+  mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ff9bf263000
+  mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ff9bf261000
+  arch_prctl(ARCH_SET_FS, 0x7ff9bf261740) = 0
+  mprotect(0x7ff9bf043000, 16384, PROT_READ) = 0
+  mprotect(0x600000, 4096, PROT_READ)     = 0
+  mprotect(0x7ff9bf270000, 4096, PROT_READ) = 0
+  munmap(0x7ff9bf264000, 38280)           = 0
+  getpid()                                = 29643
+  fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 1), ...}) = 0
+  mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ff9bf26d000
+  write(1, "29643\n", 629643
+  )                  = 6
+  exit_group(0)                           = ?
+  +++ exited with 0 +++
+  ```
+
+  [If you have a process that appears stuck, you can strace it and see what
+  it might be doing via system calls. When some app is quitting
+  unexpectedly without a proper error message, check if a syscall failure
+  explains it. You can also use filters, time each call, and so so](http://duartes.org/gustavo/blog/post/system-calls/)
+
+  ```shell
+  $ strace -T -e trace=recv curl -silent www.google.com. > /dev/null
+
+  recv(3, "HTTP/1.1 200 OK\r\nDate: Wed, 05 N"..., 16384, 0) = 4164 <0.000007>
+  recv(3, "fl a{color:#36c}a:visited{color:"..., 16384, 0) = 2776 <0.000005>
+  recv(3, "adient(top,#4d90fe,#4787ed);filt"..., 16384, 0) = 4164 <0.000007>
+  recv(3, "gbar.up.spd(b,d,1,!0);break;case"..., 16384, 0) = 2776 <0.000006>
+  recv(3, "$),a.i.G(!0)),window.gbar.up.sl("..., 16384, 0) = 1388 <0.000004>
+  recv(3, "margin:0;padding:5px 8px 0 6px;v"..., 16384, 0) = 1388 <0.000007>
+  recv(3, "){window.setTimeout(function(){v"..., 16384, 0) = 1484 <0.000006>
+  ```
+
+1. <a name="ltrace">ltrace</a>
 
   `ltrace` - a library call tracer (trace userpace libraries, routines)
 
@@ -153,9 +223,9 @@
   $ pkill -9 apache2 # same as pkill -9 apache2
   ```
 
-
 ----------
 
 # Reference
 
 1. [运维利器：万能的 strace](http://mp.weixin.qq.com/s?__biz=MzA4Nzg5Nzc5OA==&mid=2651659767&idx=1&sn=3c515cb32bcbcafe16c749024d1545ef&scene=0#wechat_redirect)
+1. [System Calls Make the World Go Round](http://duartes.org/gustavo/blog/post/system-calls/)
