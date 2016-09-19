@@ -41,6 +41,9 @@ A collection of some most frequently used tools, commands.
 
   Front end utilities.
 
+1. [clang-format](clang-format.md)
+
+  Format your code, automatically.
 
 ---------
 
