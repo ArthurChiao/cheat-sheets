@@ -14,15 +14,15 @@ Index:
   ```shell
   # Show recent commit histories that impose changes on `filepath`
   # 列出最近的commit history中,影响`filepath`的commits
-  git log -- filepath
+  $ git log -- <filepath>
 
   # Show recent commit histories that impose changes on `filepath`, and all the changes
   # 列出最近的commit history中,影响`filepath`的commits, and all the changes
-  git log -p --filepath
+  $ git log -p --<filepath>
 
   # Show file changes between `commit1` and `commit2`
   # 两次commit之间某文件的改动
-  git diff commit1:filepath commit2:filepath
+  $ git diff <commit1>:<filepath> <commit2>:<filepath>
   ```
 
   Show commit history in pretty will format:

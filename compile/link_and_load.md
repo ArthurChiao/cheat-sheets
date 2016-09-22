@@ -100,6 +100,56 @@ sig_key:        5E:3C:0F:xx:9E:84:F1:6D:A7:C7
 sig_hashalgo:   sha512
 ```
 
+<h2 id="lsmod">lsmod, insmod, modprobe</h2>
+
+* lsmod - list all installed modules
+* insmod - install module
+* modprobe - install module, and all its dependent modules
+
+```shell
+$ lsmod
+Module                  Size  Used by
+binfmt_misc            17468  1
+xfrm_user              31045  1
+xfrm_algo              15394  1 xfrm_user
+8021q                  28895  0
+garp                   14384  1 8021q
+mrp                    18778  1 8021q
+veth                   13331  0
+xt_addrtype            12635  2
+dm_thin_pool           46897  1
+dm_persistent_data     61525  1 dm_thin_pool
+dm_bufio               27502  1 dm_persistent_data
+dm_bio_prison          15501  1 dm_thin_pool
+ipt_MASQUERADE         12880  5
+iptable_nat            13011  1
+nf_nat_ipv4            13263  1 iptable_nat
+nf_nat                 21841  3 ipt_MASQUERADE,nf_nat_ipv4,iptable_nat
+nf_conntrack_ipv4      15012  3
+nf_defrag_ipv4         12758  1 nf_conntrack_ipv4
+```
+
+It reads contents from `/proc/modules`.
+
+```shell
+$ cat /proc/modules
+binfmt_misc 17468 1 - Live 0x0000000000000000
+xfrm_user 31045 1 - Live 0x0000000000000000
+xfrm_algo 15394 1 xfrm_user, Live 0x0000000000000000
+8021q 28895 0 - Live 0x0000000000000000
+garp 14384 1 8021q, Live 0x0000000000000000
+mrp 18778 1 8021q, Live 0x0000000000000000
+veth 13331 0 - Live 0x0000000000000000
+xt_addrtype 12635 2 - Live 0x0000000000000000
+dm_thin_pool 46897 1 - Live 0x0000000000000000
+dm_persistent_data 61525 1 dm_thin_pool, Live 0x0000000000000000
+dm_bufio 27502 1 dm_persistent_data, Live 0x0000000000000000
+dm_bio_prison 15501 1 dm_thin_pool, Live 0x0000000000000000
+ipt_MASQUERADE 12880 5 - Live 0x0000000000000000
+iptable_nat 13011 1 - Live 0x0000000000000000
+```
+
+
 # Reference
 -------------
 1. [高级语言的编译：链接及装载过程介绍](http://tech.meituan.com/linker.html)
