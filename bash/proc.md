@@ -229,3 +229,4 @@
 
 1. [运维利器：万能的 strace](http://mp.weixin.qq.com/s?__biz=MzA4Nzg5Nzc5OA==&mid=2651659767&idx=1&sn=3c515cb32bcbcafe16c749024d1545ef&scene=0#wechat_redirect)
 1. [System Calls Make the World Go Round](http://duartes.org/gustavo/blog/post/system-calls/)
+1. [谁偷走了你的服务器性能——strace & Ltrace篇](http://rdcqii.hundsun.com/portal/article/597.html)
