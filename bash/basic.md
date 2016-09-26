@@ -15,3 +15,16 @@ basic commands
   ```shell
   which python
   ```
+
+1. `rm`
+
+  `rm` support regex:
+
+  ```shell
+  $ touch test0 test1 test2
+  $ ls
+  test0 test1 test2
+
+  $ rm test[0-2]
+  $ ls
+  ```
