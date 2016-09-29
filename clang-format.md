@@ -10,7 +10,7 @@ clang-format
   IndentWidth: 4
   BreakBeforeBraces: Linux
   AllowShortIfStatementsOnASingleLine: false
-  IndentCaseLabels: false
+  IndentCaseLabels: true
   ```
 
   Run:

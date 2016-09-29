@@ -171,6 +171,26 @@
   18866
   ```
 
+  **show process state:**
+
+  ```shell
+  $ ps l # show BSD long format
+  F   UID   PID  PPID PRI  NI    VSZ   RSS WCHAN  STAT TTY        TIME COMMAND
+  0  1000   360  7265  20   0 211036 43348 poll_s Sl+  pts/27     1:17 vim
+  0  1000  1578  2758  20   0  24876  5796 n_tty_ Ss+  pts/26     0:00 -bash
+  0  1000  5069 15041  20   0 180652 12720 poll_s Sl+  pts/5      0:02 vim midiroute.c
+  0  1000  5420  2758  20   0  25772  6812 wait   Ss   pts/28     0:04 -bash
+  0  1000  8655  8129  20   0  15800  1200 poll_s S+   pts/3      0:00 tmux a
+  ```
+
+  If a process is sleeping, the **WCHAN** column will tell what kernel event
+  the process is waiting for.
+
+  The **STAT** column:
+
+  * `s`: this process is a session leader
+  * `+`: this process is part of a foreground process group
+
 1. <a name="kill">kill/pkill</a>
 
   Despite its misleading name, `kill/pkill` is actually a tool to send

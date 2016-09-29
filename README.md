@@ -45,6 +45,8 @@ A collection of some most frequently used tools, commands.
 
   Format your code, automatically.
 
+1. [tty](tty.md)
+
 ---------
 
 # Episodes
