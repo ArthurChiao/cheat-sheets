@@ -24,6 +24,7 @@ Index:
   | -v     | find lines that do not contain the text specified |
   | -i     | case insensitive |
   | -n     | show line number of matched lines |
+  | -l     | only show matched file names |
   | `--include=*.cpp` | only search in `.cpp` files |
   | `--exclude=*.cpp` | skip `.cpp` files |
   | `--exclude-dir=tests` | skip `tests` directory in current folder |
@@ -60,6 +61,14 @@ Index:
 
   ```shell
   $ grep -v '^ *\(#.*\)\?$' test.py | wc -l
+  ```
+
+  Combining with `sed`, substitute all `abcd` with `efgh`:
+
+  ```shell
+  $ grep -R -l abcd * # only show matched files
+
+  $ grep -R -l abcd * | xargs sed -i 's/abcd/efgh/g' # substitute
   ```
 
 1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
