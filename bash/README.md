@@ -33,6 +33,8 @@ bash commands
 
 1. [bash mode](bash-mode.md)
 
+1. [permissions](permission.md)
+
 
 --------------------
 
