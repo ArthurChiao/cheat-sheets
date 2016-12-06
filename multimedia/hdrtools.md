@@ -1,101 +1,108 @@
 HDRTools
 ========
 
-1. convert yuv420p 10bit YUV to yuv444b 10bit
+# 1. Example: convert yuv420p 10bit YUV to tiff
 
-  Use the `HDRTools/bin/HDRConvertYUV.cfg`, change the input and out file
-  names in it:
+Use the `HDRTools/bin/HDRConvertYCbCr420ToTiff.cfg`, specify input and output
+file in it, then run:
 
-  ```shell
-  $ ./HDRTools -f HDRConvertYUV.cfg
-  ```
+```shell
+$ ./HDRConvert -f HDRConvertYCbCr420ToTiff.cfg
+```
 
-  View the input and out files with vooya.
+# 2. Configuration Files
+## 2.1. convert EXR to other format
 
-1. convert yuv420p 10bit YUV to tiff
+  * `HDRTools/bin/HDRConvert.cfg`
 
-  Use the `HDRTools/bin/HDRConvertYCbCr420ToTiff.cfg`, change the input
-  and out file names in it:
+    exr 12bit BT.2020 --> yuv420p 10bit BT.2020 (PQ)
 
-  ```shell
-  $ ./HDRTools -f HDRConvertYCbCr420ToTiff.cfg
-  ```
-1. yuv420p 10bit to exr
+  * `HDRTools/bin/HDRConvert8.cfg`
 
-  `HDRTools/bin/HDRConvertToEXR.cfg`
+    exr 12bit BT.2020 --> yuv420p 8bit BT.2020 (PQ)
 
+  * `HDRTools/bin/HDRConvertAVI8.cfg`
 
-1. exr to avi/yuv
+    exr 10bit BT.2020 --> avi/yuv420p 8bit BT.2020 (PQ)
 
-  `HDRTools/bin/HDRConvertV210.cfg`
+  * `HDRTools/bin/HDRConvertBT2020EXRToICtCp.cfg`
 
-1. exr to avi/yuv
+    exr 12bit BT.2020 --> avi/yuv420p 10bit **ICtCp** (Dolby) (PQ)
 
-  `HDRTools/bin/HDRConvertUYVY.cfg`
+    **TODO: ICtCp??**
 
-1. exr to tiff
+  * `HDRTools/bin/HDRConvertEXR.cfg`
 
-  `HDRTools/bin/HDRConvertToTiff.cfg`
+    exr 10bit BT.709 **CM_RGB** --> exr 10bit 444 BT.709 **CM_YUV**
 
-1. tiff to exr
-
-  `HDRTools/bin/HDRConvertTiff.cfg`
-
-1. tiff to yuv444p 10bit
-
-  `HDRTools/bin/HDRConvertTiff2.cfg`
-
-1. exr to yuv420p 8bit
-
-  `HDRTools/bin/HDRConvertRGB8.cfg`
-
-1. yuv420p 10bit ictcp to 444_bt2020 tiff
-
-  `HDRTools/bin/HDRConvertICtCpToBt2020Tiff.cfg`
-
-1. yuv420p 10bit ictcp to 444_bt2020 exr
-
-  `HDRTools/bin/HDRConvertICtCpToBt2020EXR.cfg`
-
-1. yuv420p 10bit to exr
-
-  `HDRTools/bin/HDRConvertHLGToEXR.cfg`
-
-1. 444 bt2020 exr to yuv420p 10bit
-
-  `HDRTools/bin/HDRConvertHLGToEXR.cfg`
-
-1. yuv420p 10bit bt709 to 444 bt709 exr
-
-  `HDRTools/bin/HDRConvertEXR.cfg`
+    **TODO: ???**
 
 
-1. 444 bt2020 exr 444 P3D56 exr
+  * `HDRTools/bin/HDRConvertEXR2.cfg`
 
-  `HDRTools/bin/HDRConvertEXR2.cfg`
+     exr 12bit BT.2020 444 --> exr 10bit 444 **P3D56**
 
-
-1. 709 tif to 444 10bit yuv
-
-  `HDRTools/bin/HDRConvertDPX.cfg`
+     **TODO: P3D56**
 
 
-1. bt2020 tiff to yuv420p 10bit
-  `HDRTools/bin/HDRConvertBT2020TiffToICtCp.cfg`
+  * `HDRTools/bin/HDRConvertHLGToEXR.cfg`
 
-1. bt2020 exr to yuv420p 10bit
+    exr 12bit BT.2020 --> yuv420p 10bit BT.2020 (TF_HLG)
 
-  `HDRTools/bin/HDRConvertBT2020EXRToICtCp.cfg`
+  * `HDRTools/bin/HDRConvertRGB8.cfg`
 
+    exr 10bit BT.2020 --> yuv420p 8bit BT.2020 (PQ)
 
-1. ct2020 exr to 420p 8bit avi/yuv
+  * `HDRTools/bin/HDRConvertToTiff.cfg`
 
-  `HDRTools/bin/HDRConvertAVI8.cfg`
+    exr 10bit BQ.2020 (PQ) --> tiff 16bit BT.2020 (PQ)
 
-1. ct2020 exr to 420p 8bit UYVY
+  * `HDRTools/bin/HDRConvertUYVY.cfg`
 
-  `HDRTools/bin/HDRConvert8.cfg`
+    exr 10bit BT.2020 --> avi/yuv 8bit BT.2020 (PQ)
 
-1. ct2020 exr to 420p 10bit UYVY
+  * `HDRTools/bin/HDRConvertV210.cfg`
 
-  `HDRTools/bin/HDRConvert.cfg`
+    exr 12bit BT.2020 --> avi/yuv 10bit BT.2020 (PQ)
+
+## 2.2. convert TIF to other format
+  * `HDRTools/bin/HDRConvertBT2020TiffToICtCp.cfg`
+
+    tiff BT.2020 12bit --> yuv420p 10bit ICtCp (Dolby) (PQ)
+
+  * `HDRTools/bin/HDRConvertDPX.cfg`
+
+    tiff BT.2020 10bit (PQ) --> yuv420p 10bit BT.2020 (PQ)
+
+  * `HDRTools/bin/HDRConvertTiff.cfg`
+
+    tiff 10bit BT.2020 (PQ) --PQ--> exr 10bit BT.2020
+
+  * `HDRTools/bin/HDRConvertTiff2.cfg`
+
+    tiff 10bit BT.2020 (PQ) --> exr 10bit BT.2020 (PQ)
+
+## 2.3. convert YUV to other format
+  * `HDRTools/bin/HDRConvertHLGToEXR.cfg`
+
+    yuv420p 10bit BT.2020 (TF_HLG) --> exr 8bit BT.2020
+
+  * `HDRTools/bin/HDRConvertICtCpToBt2020EXR.cfg`
+
+    yuv420p 10bit iCtCp (PQ) --> exr 12bit BT.2020
+
+  * `HDRTools/bin/HDRConvertICtCpToBt2020Tiff.cfg`
+
+    yuv420p 10bit iCtCp (PQ) --> tif 12bit BT.2020 (PQ)
+
+  * `HDRTools/bin/HDRConvertToEXR.cfg`
+
+    yuv420p 10bit (PQ) --> exr 10bit BT.2020
+
+  * `HDRConvertYCbCr420ToTiff.cfg`
+
+    yuv420p 10bit BT.2020 (PQ) --> tiff 12bit BT.2020 (PQ)
+
+  * `HDRConvertYUV.cfg`
+
+    yuv420p 10bit BT.2020 (PQ) --> yuv444 10bit BT.2020 (PQ)
