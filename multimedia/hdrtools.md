@@ -106,3 +106,27 @@ $ ./HDRConvert -f HDRConvertYCbCr420ToTiff.cfg
   * `HDRConvertYUV.cfg`
 
     yuv420p 10bit BT.2020 (PQ) --> yuv444 10bit BT.2020 (PQ)
+
+## 2.4 Some Configuration Parameters
+1. FourCCCode
+
+  https://www.fourcc.org/yuv.php
+
+  ```shell
+  PF_UNKNOWN = -1,     //!< Unknown color ordering
+  PF_UYVY    =  0,     //!< UYVY (YUV 4:2:2 ,U and V sampled at every second pixel horizontally on each line)
+  PF_YUY2    =  1,     //!< YUY2 (YUV 4:2:2 as for UYVY but with different component ordering within the u_int32 macropixel.)
+  PF_YUYV    =  2,     //!< YUYV (Duplicate of YUY2)
+  PF_YVYU    =  3,     //!< YVYU (YUV 4:2:2 as for UYVY but with different component ordering within the u_int32 macropixel.)
+  PF_BGR     =  4,     //!< BGR
+  PF_RGB     =  5,     //!< RGB
+  PF_V210    =  6,     //!< V210 (planar 10-bit 4:2:2 YCrCb)
+  PF_UYVY10  =  7,     //!< UYVY10
+  PF_V410    =  8,     //!< V410 (10 bit Packed YUV 4:4:4)
+  PF_R210    =  9,     //!< R210 (10 bit RGB)
+  PF_R10K    =  10,    //!< R10K
+  PF_XYZ     =  11,    //!< XYZ
+  ```
+
+  **`SourceFourCCCode` needs to be configured only if `SourceChromaFormat` is
+  `422` or `444`.**
