@@ -42,3 +42,12 @@ FFmpeg Cheat-Sheet
   # "atempo=2.0"
   $ ffmpeg -i input.mkv -filter:a "atempo=2.0,atempo=2.0" -vn output.mkv
   ```
+
+  **for video:**
+  ```shell
+  # speed up by 2 times
+  $ ffmpeg -i input.mkv -filter:v "setpts=0.5*PTS" output.mkv
+
+  # slow down by 20 times
+  $ ffmpeg -i input.mkv -filter:v "setpts=20.0*PTS" output.mkv
+  ```
