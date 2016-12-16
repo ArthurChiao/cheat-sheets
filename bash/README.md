@@ -3,7 +3,7 @@ bash commands
 
 1. [basic commands](basic.md)
 
-  `whatis`, `info`, `man`, `which`
+  `whatis`, `info`, `man`, `which`, `rm`, `ls`
 
 1. [file options](file.md)
 
