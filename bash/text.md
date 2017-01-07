@@ -47,6 +47,25 @@ Index:
   $ grep -R --exclude=*.svg --exclude=*.js 400 # grep `400`
   ```
 
+  For a project under-developing, you could create a `grep.sh` like this:
+
+  ```shell
+  #!/bin/sh
+
+  grep -R --color=always --exclude=tags --exclude-dir=tests \
+      --exclude-dir=datapath-windows \
+      --exclude-dir=ovn \
+      --exclude-dir=xenserver \
+      "$@"
+  ```
+
+  and grep something like the following, which filters out lots of
+  items matched in un-interested files/dirs:
+
+  ```shell
+  $ ./grep.sh ofproto *
+  ```
+
   **grep also supports Chinese**:
 
   ```shell
