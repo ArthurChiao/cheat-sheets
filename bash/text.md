@@ -28,6 +28,7 @@ Index:
   | `--include=*.cpp` | only search in `.cpp` files |
   | `--exclude=*.cpp` | skip `.cpp` files |
   | `--exclude-dir=tests` | skip `tests` directory in current folder |
+  | -e     | specify one search pattern (or word) |
 
   ```shell
   # grep word `session`, retain uppper and down context (each 2 lines)
@@ -88,6 +89,16 @@ Index:
   $ grep -R -l abcd * # only show matched files
 
   $ grep -R -l abcd * | xargs sed -i 's/abcd/efgh/g' # substitute
+  ```
+
+  `-e PATTERN, --regexp=PATTERN`
+
+  Multiple `-e` can be used to specify different search patterns.
+  This option is also useful to protect a pattern beginning with a hyphen (-).
+  **e.g. search line containing both "word1" and "word2":**
+
+  ```shell
+  $ grep -e word -e word *
   ```
 
 1. <a name="tr">`tr` - 可以完成简单的字符转换任务</a>
