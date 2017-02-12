@@ -50,4 +50,9 @@ FFmpeg Cheat-Sheet
 
   # slow down by 20 times
   $ ffmpeg -i input.mkv -filter:v "setpts=20.0*PTS" output.mkv
+
+  # speedup both audio & video by 2 times
+  # `add -strict experimental` for workaround `aac` encoding warning
+  $ ffmpeg -i the_3rd_polar.mp4 -strict experimental -filter:a "atempo=2.0"  \
+  -filter:v "setpts=0.5*PTS" the_3rd_polar_speedup_x2.mp4
   ```
