@@ -57,6 +57,7 @@ ldd 命令模拟加载可执行程序需要的动态链接库，但并不执行�
 我们平常工作中，如果某一个二进制可执行文件报错找不到某个函数定义，
 可以用这个命令检查是否系统丢失或者没有安装某一个动态链接库。
 
+**Note:** the equivalent tool of `ldd` on `MAC OSX` is `otool` with `-L` option.
 
 <h2 id="inspect_memory_mapping">inspect memory mapping</h2>
 
