@@ -8,34 +8,34 @@ Multimedia Tools
 
 1. HDR file viewer
 
-  View `.exr` images.
+    View `.exr` images.
 
-  * luminance-hdr
+    * luminance-hdr
 
-    cross platform, linux/windows/mac
+      cross platform, linux/windows/mac
 
 1. YUV player
 
-  * vooya
+    * vooya
 
-    cross platform, linux/windows/mac
+      cross platform, linux/windows/mac
 
-  * yuvplayer
+    * yuvplayer
 
-    **windows only**, tiny software, no installation
+      **windows only**, tiny software, no installation
 
 1. Player
 
-  * VLC
+    * VLC
 
-    cross platform, linux/windows/mac
+      cross platform, linux/windows/mac
 
-    powerful
+      powerful
 
-  * ffplay
+    * ffplay
 
 1. Image format convertion
 
-  * http://www.online-convert.com
+    * http://www.online-convert.com
 
-    free, online convertion
+      free, online convertion

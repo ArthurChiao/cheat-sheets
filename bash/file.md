@@ -13,192 +13,192 @@
 
 1. <a name="df">df</a>
 
-  df - report file system disk space usage
+    df - report file system disk space usage
 
-  ```shell
-  # show disk usage, in human readable (-h) format:
-  $ df -h
-  Filesystem      Size  Used Avail Use% Mounted on
-  /dev/sda2       907G  111G  750G  13% /
-  none            4.0K     0  4.0K   0% /sys/fs/cgroup
-  udev            4.8G  4.0K  4.8G   1% /dev
-  tmpfs           984M  1.3M  983M   1% /run
-  none            5.0M     0  5.0M   0% /run/lock
-  none            4.9G  106M  4.7G   3% /run/shm
-  none            100M   48K  100M   1% /run/user
-  /dev/sda1       511M  3.4M  508M   1% /boot/efi
-  ```
+    ```shell
+    # show disk usage, in human readable (-h) format:
+    $ df -h
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/sda2       907G  111G  750G  13% /
+    none            4.0K     0  4.0K   0% /sys/fs/cgroup
+    udev            4.8G  4.0K  4.8G   1% /dev
+    tmpfs           984M  1.3M  983M   1% /run
+    none            5.0M     0  5.0M   0% /run/lock
+    none            4.9G  106M  4.7G   3% /run/shm
+    none            100M   48K  100M   1% /run/user
+    /dev/sda1       511M  3.4M  508M   1% /boot/efi
+    ```
 
 1. <a name="du">du</a>
 
-  du - estimate disk (space) usage of a folder or file
+    du - estimate disk (space) usage of a folder or file
 
-  ```shell
-  du -sh <file or folder>
+    ```shell
+    du -sh <file or folder>
 
-  # exmaples
-  du -sh . # total disk usage of current folder
+    # exmaples
+    du -sh . # total disk usage of current folder
 
-  du -sh * # disk usage of each files in current folder
+    du -sh * # disk usage of each files in current folder
 
-  du -sh ./log # disk usage of ./log folder
+    du -sh ./log # disk usage of ./log folder
 
-  # useful shortcut
-  alias lss='du -sh .'
+    # useful shortcut
+    alias lss='du -sh .'
 
-  lss # same as 'du -sh .'
-  ```
+    lss # same as 'du -sh .'
+    ```
 
 1. <a name="rev">rev</a>
 
-  rev - reverse lines of a file or files
-  ```shell
-  cat TODO.md
+    rev - reverse lines of a file or files
+    ```shell
+    cat TODO.md
 
-  1. network optimization: classid in linux network
+    1. network optimization: classid in linux network
 
-  rev TODO.md
+    rev TODO.md
 
-  krowten xunil ni dissalc :noitazimitpo krowten .1
-  ```
+    krowten xunil ni dissalc :noitazimitpo krowten .1
+    ```
 
 1. <a name="find">find</a>
 
-  ```shell
-  # find and remove all `*.pyc` files, recursively
-  find . -name "*.pyc" -exec rm -f {} \; # remove file
+    ```shell
+    # find and remove all `*.pyc` files, recursively
+    find . -name "*.pyc" -exec rm -f {} \; # remove file
 
-  find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
+    find . -name "*.pyc" -exec git rm -f {} \; # remove from git repo
 
-  # rename all .dsc files to .dsc.bak
-  find . -name “.dsc” | xargs -I{} mv {} {}.bak
+    # rename all .dsc files to .dsc.bak
+    find . -name “.dsc” | xargs -I{} mv {} {}.bak
 
-  # 将当前目录下的所有权变更为arthur
-  # {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名
-  find . -type f -user root -exec chown arthur {} \;
+    # 将当前目录下的所有权变更为arthur
+    # {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名
+    find . -type f -user root -exec chown arthur {} \;
 
-  # copy all found files to another folder
-  find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
+    # copy all found files to another folder
+    find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
 
-  # 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本
-  -exec ./task.sh {} \;
-  ```
+    # 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本
+    -exec ./task.sh {} \;
+    ```
 
-  count how many files in current folder:
-  ```shell
-  find . | wc -l
+    count how many files in current folder:
+    ```shell
+    find . | wc -l
 
-  # list all files in current dir, and number them
-  ls | cat -n # `-n` number all output lines
+    # list all files in current dir, and number them
+    ls | cat -n # `-n` number all output lines
 
-      1  LICENSE
-      2  README.md
-      3  bash
-      4  compile
-      5  git
-      6  profiling.md
-      7  tmux.md
-  ```
+        1  LICENSE
+        2  README.md
+        3  bash
+        4  compile
+        5  git
+        6  profiling.md
+        7  tmux.md
+    ```
 
-  how many lines of python code in current folder:
-  ```shell
-  find . -name *.py | xargs cat | wc -l
-  ```
+    how many lines of python code in current folder:
+    ```shell
+    find . -name *.py | xargs cat | wc -l
+    ```
 
-  ```shell
-  # find all .txt
-  find . -name "*.txt"
+    ```shell
+    # find all .txt
+    find . -name "*.txt"
 
-  # find all files except .txt
-  find . ! -name "*.txt"
+    # find all files except .txt
+    find . ! -name "*.txt"
 
-  # specify search depth
-  find . -maxdepth 1 -type f
-  ```
+    # specify search depth
+    find . -maxdepth 1 -type f
+    ```
 
-  find by ***time/size/permission/***:
+    find by ***time/size/permission/***:
 
-  | command | effects |
-  | :------ | :------------ |
-  | find . -atime 7 -type f | 最近`第7天`被访问过的所有文件 |
-  | find . -atime -7 -type f | 最近`7天内`被访问过的所有文件 |
-  | find . -atime +7 -type f | `7天前`被访问过的所有文件 |
-  | find . -type f -size +2k | 寻找大于2k的文件 |
-  | `find . -size 0 | xargs rm -f &` | remove zero size files |
-  | find . -type f -perm 644 | 找具有可执行权限的所有文件 |
-  | find . -type f -user arthur | find all files owned by `arthur` |
+    | command | effects |
+    | :------ | :------------ |
+    | find . -atime 7 -type f | 最近`第7天`被访问过的所有文件 |
+    | find . -atime -7 -type f | 最近`7天内`被访问过的所有文件 |
+    | find . -atime +7 -type f | `7天前`被访问过的所有文件 |
+    | find . -type f -size +2k | 寻找大于2k的文件 |
+    | `find . -size 0 | xargs rm -f &` | remove zero size files |
+    | find . -type f -perm 644 | 找具有可执行权限的所有文件 |
+    | find . -type f -user arthur | find all files owned by `arthur` |
 
 
 
 1. file <a name="file"></a>
 
-  show file info, such as file type
+    show file info, such as file type
 
-  ```shell
-  file README.md
+    ```shell
+    file README.md
 
-  # find all executables in current dir
-  ls -lrt | awk '{print $9}'|xargs file|grep  ELF| awk '{print (}'|tr -d ':')
-  ```
+    # find all executables in current dir
+    ls -lrt | awk '{print $9}'|xargs file|grep  ELF| awk '{print (}'|tr -d ':')
+    ```
 
 1. tee <a name="tee"></a>
 
-  > tee - read from standard input and write to standard output and files
+    > tee - read from standard input and write to standard output and files
 
-  将标准输入的内容复制到文件或者标准输出
+    将标准输入的内容复制到文件或者标准输出
 
-  ```shell
-  $ ls -al | tee file.txt`
+    ```shell
+    $ ls -al | tee file.txt`
 
-  $ cat input.txt | tee output.txt
-  ```
+    $ cat input.txt | tee output.txt
+    ```
 
-  source code of tee is [here](http://www.opensource.apple.com/source/shell_cmds/shell_cmds-18/tee/tee.c),
-  really simple, just couples of lines.
+    source code of tee is [here](http://www.opensource.apple.com/source/shell_cmds/shell_cmds-18/tee/tee.c),
+    really simple, just couples of lines.
 
 1. <a name="dd">dd</a>
 
-  Copy a file, converting and formatting according to the operands.
-  在文件或设备间传输数据
+    Copy a file, converting and formatting according to the operands.
+    在文件或设备间传输数据
 
-  Example, generate 1GB test file with random data:
-  ```shell
-  dd if=/dev/urandom of=testdata bs=1M count=1024
+    Example, generate 1GB test file with random data:
+    ```shell
+    dd if=/dev/urandom of=testdata bs=1M count=1024
 
-  # if: read from file instead of stdin
-  # of: write to file instead of stdout
-  # bs: read and write BYTES bytes at a time (also see ibs=,obs=)
-  # count: copy only N input blocks
-  ```
+    # if: read from file instead of stdin
+    # of: write to file instead of stdout
+    # bs: read and write BYTES bytes at a time (also see ibs=,obs=)
+    # count: copy only N input blocks
+    ```
 
 1. <a name="tar">tar</a>
 
-  create/extract archives
+    create/extract archives
 
-  `Tar` comes from `Tape Archiver`, it is a POSIX standard.
-  `tar` only packs files (result in `.tar` files), if you want compress them,
-  you need to specify a compression method, e.g, `bzip2` (`.tar.bz2`),
-  `gzip` (`.tar.gz`).
+    `Tar` comes from `Tape Archiver`, it is a POSIX standard.
+    `tar` only packs files (result in `.tar` files), if you want compress them,
+    you need to specify a compression method, e.g, `bzip2` (`.tar.bz2`),
+    `gzip` (`.tar.gz`).
 
-  ```shell
-  # put all files in `/home/xxx/testdir/` into a new created archive, and
-  # compress it with `gzip` format
-  tar pczf test.tar.gz /home/xxx/testdir
+    ```shell
+    # put all files in `/home/xxx/testdir/` into a new created archive, and
+    # compress it with `gzip` format
+    tar pczf test.tar.gz /home/xxx/testdir
 
-  # `p` - preserve file attributes and priviledges
-  # `c` - create new file
-  # `z` - compress with gzip
-  # `f` - create new archive file, otherwise the output will be `stdout`
+    # `p` - preserve file attributes and priviledges
+    # `c` - create new file
+    # `z` - compress with gzip
+    # `f` - create new archive file, otherwise the output will be `stdout`
 
 
-  # extract files
-  tar xzvf test.tar.gz
-  # 'x' - extract
-  # 'z' - gzip compressed
-  # 'v' - verbose
-  # 'f' - read from a file (`test.tar.gz`)
-  ```
+    # extract files
+    tar xzvf test.tar.gz
+    # 'x' - extract
+    # 'z' - gzip compressed
+    # 'v' - verbose
+    # 'f' - read from a file (`test.tar.gz`)
+    ```
 
 1. <a name="rename">rename</a>
 
-  batch rename tools
+    batch rename tools

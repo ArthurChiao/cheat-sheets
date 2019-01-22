@@ -3,6 +3,7 @@ bash mode
 
 
 # emacs mode
+
 This is the most widely used mode, and also the default mode of bash.
 
 | command | function |
@@ -23,6 +24,7 @@ This is the most widely used mode, and also the default mode of bash.
 | alt-d   | cut one charactor (forward) |
 
 # vim mode
+
 This mode is not as popular as `emacs` mode. It needs `ESC` to switch between
 `insert mode` and `command mode`.
 
